@@ -1,0 +1,61 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load url from future %}
+{% load bootstrap %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+<p>
+<a
+  title="Facebook"
+  class="btn btn-primary btn-block btn-lg facebook"
+  href="javascript:allauth.facebook.login('', 'authenticate', 'login')">
+  <span class="fa fa-facebook-square"></span>
+  &nbsp;&nbsp;
+  Sign in with Facebook
+</a>
+</p>
+
+<h1>{% trans "Sign In" %}</h1>
+
+<p>
+  Please sign in or <a href="{{ signup_url }}">register for an account.</a>
+</p>
+
+{% if socialaccount.providers  %}
+<!--
+<div id="account_form_content">
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% trans 'or' %}</div>
+
+</div>
+-->
+{% endif %}
+
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  <div id='loginFormSnippet'>
+  {% csrf_token %}
+  {{ form|bootstrap }}
+  </div>
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+  <button class="btn btn-success" type="submit">{% trans "Sign In" %}</button>
+</form>
+</div>
+
+{% endblock %}

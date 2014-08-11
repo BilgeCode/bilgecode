@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+<!--
+
+  Content brainstorm:
+
+  sources
+  getting started
+  list of passages
+  demo mode
+  
+
+-->
+
+{% block title %}
+  PassagePlanner by BilgeCode.com ~ Plan your trip on the water.
+{% endblock %}
+
+{% block bc-content %}
+
+<div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/headers/heel.jpg' %}');height: 40px;background-position: left center;border-bottom: 1px solid #eee;"></div>
+<div class='jumbotron'>
+  <div class="container container-title">
+    <h1>
+      Passage Planner
+      <sup><small>beta</small></sup>
+      <small>&raquo; Know the conditions along your route.</small>
+    </h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-5">
+      <h2>Your Passages</h2>
+      {% if user.is_authenticated %}
+        {% if passage_list %}
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Passage Name</th>
+              <th>Date Created</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for passage in passage_list %}
+              <tr>
+                <td>
+                  <a href="{{ passage.get_absolute_url }}">
+                    {{ passage }}
+                  </a>
+                </td>
+                <td>
+                  {{ passage.date_created }}
+                </td>
+                <td>
+                  <a href="{% url 'planner-delete' passage.hash_key %}">
+                    <span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="alert alert-warning">
+            You haven't created any passages yet. Create a new one now...
+          </div>
+        {% endif %}
+        <a href="{% url 'planner-new' %}" class='btn btn-lg btn-success btn-block'>
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          Create a New Passage
+        </a>
+      {% else %}
+        {# Not logged in #}
+        <div class="alert alert-warning">
+          <p>
+            Since you're not logged in, you <strong>can't save</strong> your passages, but you can still use Passage Planner in <em>demo mode</em>.
+          </p>
+        </div>
+        <div class="alert alert-info">
+          <p>
+            Registration is <strong>FREE</strong> and quick.
+          </p>
+        </div>
+        <a href="/accounts/signup/?next=/passage-planner/" class='btn btn-lg btn-info btn-block'>
+          <span class="glyphicon glyphicon-ok-circle"></span>
+          Register Now
+        </a><br/>
+        <a href="{% url 'planner-demo' %}" class='btn btn-lg btn-warning btn-block'>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          Try the Demo
+        </a>
+
+      {% endif %}
+    </div>
+    
+    <div class="col-md-4">
+      <h2>
+        Intro Video
+        <small>&raquo; 2min</small>
+      </h2>
+      <p>
+        Learn how to use Passage Planner.
+      </p>
+      <p style="text-align: center"><br/>
+        <img src="{% static 'images/pp-intro-video.png' %}">
+      </p>
+    </div>
+    
+    <div class="col-md-3">
+      <h2>About the Data</h2>
+      <p>
+        <img src="{% static 'images/sources/noaa_100x100.png' %}">
+      </p>
+      <p>
+        <strong>Tide Station Data</strong>
+        is collected using <a href="http://tidesandcurrents.noaa.gov/">NOAA's Tides &amp; Currents website</a>.
+      </p>
+      <hr>
+      <p>
+        <a href="http://suncalc.net/">
+          <img src="{% static 'images/sources/suncalc.png' %}"></a>
+      </p>
+      <p>
+          <strong>Sun Position Data</strong>
+          is calculted using an open source <a href="https://github.com/mourner/suncalc">javascript library</a> provided by <a href="http://suncalc.net/">suncalc.net</a>.
+      </p>
+      <hr>
+      <p>
+        More data sources in the works...
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

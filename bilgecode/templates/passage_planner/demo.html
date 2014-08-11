@@ -1,0 +1,9 @@
+{% extends 'passage_planner/wrapper.html' %}
+
+{% block planner_call %}
+  <bc-planner
+    topOffset="50"
+    mode="demo"
+    tideEndpoint="{% url 'tidestation-list' %}">
+  </bc-planner>
+{% endblock %}

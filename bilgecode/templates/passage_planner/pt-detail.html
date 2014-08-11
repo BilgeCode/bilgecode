@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Passage Timing, a planning tool for travel by boat with sunrise/sunset, tidal, wind, current and other weather data.">
+    <meta name="author" content="Benjamin W Stookey">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <title>Passage Planner by Bilgecode.com ~ Know the weather along your route.</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700,300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'pt/app/styles/main.css' %}">
+
+    <script src="{% static 'pt/app/bower_components/platform/platform.js' %}"></script>
+    <link rel="import" href="{% static 'pt/app/elements/pt-planner.html' %}?v=1">
+
+    <script>
+      // timezoneJS.timezone.zoneFileBasePath = this.resolvePath('../tz');
+      // timezoneJS.timezone.defaultZoneFile = ['northamerica'];
+      // timezoneJS.timezone.loadingScheme = timezoneJS.timezone.loadingSchemes.PRELOAD_ALL;
+      // timezoneJS.timezone.init();
+      // timezoneJS.timezone.init({async: false});
+    </script>
+  </head>
+
+  <body>
+
+    {% block planner_call %}
+      <pt-planner id="planner"
+        {% if object.user != user %}mode='readonly'{% else %}mode="edit"{% endif %}
+        passageEndpoint="{% url 'passage-endpoint' object.id %}"
+        tideEndpoint="{% url 'tidestation-list' %}">
+      </pt-planner>
+
+      <script>
+        document.addEventListener('polymer-ready', function() {
+          var p = document.getElementById('planner');
+          p.authOptions = {
+            loginLink: "/accounts/login/",
+            logoutLink: "/accounts/logout/",
+            homeLink: "/passage-planner/",
+            {% if user.is_authenticated %}username: "{{user.username}}",{% endif %}
+            helpMenuItems: [
+              ["Contact Me", "/contact/"],
+              ["Help", "/help/"]
+            ]
+          }
+        });
+      </script>
+    {% endblock %}
+
+  </body>
+</html>

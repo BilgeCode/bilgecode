@@ -1,0 +1,146 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Planning tools for sailors and boaters.">
+    <meta name="author" content="Benjamin W Stookey">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <title>{% block title %}BilgeCode{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    <!-- Custom styles -->
+    <link href="{% static 'css/bc.css' %}" rel="stylesheet">
+
+    {% block extra_style %}
+    <style>
+    body {
+      padding-bottom: 20px;
+      background-image: url('{% static 'images/shadow-logo.png' %}');
+      background-position: -60px bottom;
+      background-repeat: no-repeat;
+    }
+    </style>
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    {% include "navbar.html" %}
+
+    {% block bc-content %}
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/sunset.jpg' %}');height: 40px;background-position: center bottom;border-bottom: 1px solid #eee;"></div>
+    <div class="jumbotron">
+      <div class="container">
+        <img
+          src="{% static 'images/bilgecode_213x200.png' %}"
+          alt="BilgeCode.com Logo"
+          class='pull-left'
+          style="margin: 20px 40px 20px 0px;">
+        <h1>BilgeCode</h1>
+        <p>
+          <em>Software for boaters.</em>
+          <br>
+          On a mission to provide awesome tools for those of us traveling on the water.
+        </p>
+        <a href="/about/" class="btn btn-success" role="button">Learn more &raquo;</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="/passage-planner/">
+          <img
+            src="{% static 'images/passage-planner-circle.png' %}"
+            alt="Passage Planner Logo"
+            class='pull-left'
+            style="margin: 20px 40px 50px 0px;"></a>
+          <h2>
+            Passage Planner
+            <sup style='font-size: .7em;color: #ccc;font-weight: normal;'>beta</sup>
+          </h2>
+          <p>Tide, sunrise/sunset, and weather predictions at any point along your route. My first BilgeCode project.</p>
+          <p>
+            <a class="btn btn-primary" href="/passage-planner/" role="button">
+              Start Planning &raquo;</a>
+            <a class="btn btn-info" href="#" role="button">
+              Watch the intro video &raquo;</a>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img
+            src="{% static 'images/ben.jpg' %}"
+            alt="Ben"
+            class='pull-right'
+            style="margin: 20px 0px 50px 40px;">
+          <h2>Who's behind this?</h2>
+          <p>
+            I'm a web developer working remotely from a 26' Nonsuch, currently exploring the coast of Nova Scotia. I'm passionate about simple software solutions, sustainabile living, and of course, sailing!
+          </p>
+          <p>
+            <strong class="pull-right">-Ben</strong>
+          </p>
+        </div>
+      </div>
+
+      {% endblock %}
+
+      {% block footer %}
+        {% include "footer.html" %}
+      {% endblock %}
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- uservoice -->
+    <script>
+    UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/4zgIz2SZhfaXdqw7FDGEg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+    // Set colors
+    UserVoice.push(['set', {
+      accent_color: '#448dd6',
+      trigger_color: 'white',
+      trigger_background_color: 'rgba(46, 49, 51, 0.6)',
+      smartvote_title: "Help me decide what to add next",
+      contact_title: "How can I help?"
+    }]);
+
+    // Identify the user and pass traits
+    // To enable, replace sample data with actual user traits and uncomment the line
+    UserVoice.push(['identify', {
+      {% if user.is_authenticated %}
+        email: '{{ user.email }}',
+      {% endif %}
+    }]);
+
+    // Add default trigger to the bottom-right corner of the window:
+    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'top-right' }]);
+
+    // Or, use your own custom trigger:
+    //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
+
+    // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
+    UserVoice.push(['autoprompt', {}]);
+    </script>
+  </body>
+</html>

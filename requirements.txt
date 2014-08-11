@@ -1,0 +1,22 @@
+Django==1.6.2
+Markdown==2.4
+South==0.8.4
+beautifulsoup4==4.3.2
+dj-database-url==0.3.0
+django-allauth==0.16.1
+django-bootstrap-form==3.1
+django-cache-url==0.8.0
+django-filter==0.7
+django-jsonfield==0.9.12
+djangorestframework==2.3.13
+-e hg+ssh://hg@bitbucket.org/bilgecode/django-tides#egg=django-tides
+gunicorn==18.0
+ipython==2.0.0
+oauthlib==0.6.1
+psycopg2==2.5.2
+python-openid==2.2.5
+python-stathat==0.2.0
+pytz==2014.2
+requests==2.2.1
+requests-oauthlib==0.4.0
+wsgiref==0.1.2
