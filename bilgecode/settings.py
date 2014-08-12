@@ -107,6 +107,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "bilgecode", "static"),
 )
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, "..", "media"))
+STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, "..", "static"))
 
 # all auth
 TEMPLATE_CONTEXT_PROCESSORS = (
