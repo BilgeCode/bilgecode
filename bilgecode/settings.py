@@ -106,7 +106,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "bilgecode", "static"),
 )
-MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, "..", "media")
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, "..", "media"))
 
 # all auth
 TEMPLATE_CONTEXT_PROCESSORS = (
