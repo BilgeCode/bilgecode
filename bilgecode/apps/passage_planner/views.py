@@ -52,14 +52,14 @@ class PassageNew(RedirectView):
 
 
 class PassageDemo(TemplateView):
-    template_name = "passage_planner/pt-demo.html"
+    template_name = "passage_planner/demo.html"
 
 
 class PassageDetail(DetailView):
     """
         Display a specific passage
     """
-    template_name = "passage_planner/pt-detail.html"
+    template_name = "passage_planner/detail.html"
     slug_field = "hash_key"
     queryset = Passage.objects.all()
 

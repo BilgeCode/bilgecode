@@ -20,3 +20,7 @@ var/
 
 # Mac
 .DS_Store
+
+# Symlinked dependencies
+bilgecode/static/pt
+django_tides

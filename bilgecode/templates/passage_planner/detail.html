@@ -1,14 +1,25 @@
-{% extends 'passage_planner/wrapper.html' %}
+{% extends "passage_planner/wrapper.html" %}
 
-{% block planner_call %}
-  <bc-planner
-    topOffset="50"
+{% block planner_component %}
+  <pt-planner id="planner"
+    {% if object.user != user %}mode='readonly'{% else %}mode="edit"{% endif %}
     passageEndpoint="{% url 'passage-endpoint' object.id %}"
-    tideEndpoint="{% url 'tidestation-list' %}"
-    {% if object.user != user %}
-      mode='readonly'
-    {% else %}
-      mode="edit"
-    {% endif %}>
-  </bc-planner>
+    tideEndpoint="{% url 'tidestation-list' %}">
+  </pt-planner>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var p = document.getElementById('planner');
+      p.authOptions = {
+        loginLink: "/accounts/login/",
+        logoutLink: "/accounts/logout/",
+        homeLink: "/passage-planner/",
+        {% if user.is_authenticated %}username: "{{user.username}}",{% endif %}
+        helpMenuItems: [
+          ["Contact Me", "/contact/"],
+          ["Help", "/help/"]
+        ]
+      }
+    });
+  </script>
 {% endblock %}

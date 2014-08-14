@@ -1,9 +1,23 @@
-{% extends 'passage_planner/wrapper.html' %}
+{% extends "passage_planner/wrapper.html" %}
 
-{% block planner_call %}
-  <bc-planner
-    topOffset="50"
+{% block planner_component %}
+
+  <pt-planner id="planner"
     mode="demo"
     tideEndpoint="{% url 'tidestation-list' %}">
-  </bc-planner>
+  </pt-planner>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var p = document.getElementById('planner');
+      p.authOptions = {
+        loginLink: "/users/login/",
+        homeLink: "/passage-planner/",
+        helpMenuItems: [
+          ["Knowledge Base", "http://bilgecode.uservoice.com/knowledgebase/"]
+        ]
+      }
+    });
+  </script>
+
 {% endblock %}
