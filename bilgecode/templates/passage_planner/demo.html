@@ -11,7 +11,8 @@
     document.addEventListener('polymer-ready', function() {
       var p = document.getElementById('planner');
       p.authOptions = {
-        loginLink: "/users/login/",
+        loginLink: "/accounts/login/",
+        logoutLink: "/accounts/logout/",
         homeLink: "/passage-planner/",
         helpMenuItems: [
           ["Knowledge Base", "http://bilgecode.uservoice.com/knowledgebase/"]
