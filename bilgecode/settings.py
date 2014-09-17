@@ -25,7 +25,7 @@ DEBUG = os.environ.get("DEBUG", False)
 TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = [os.path.join(os.path.dirname(__file__), "templates")]
 
-ALLOWED_HOSTS = ['prev.bilgecode.org']
+ALLOWED_HOSTS = ['prev.bilgecode.org', 'localhost']
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = (
 
     'bootstrapform',
     'django_tides',
+    # 'djstripe',
     'rest_framework',
     'south',
 )
@@ -124,7 +125,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
     # allauth specific context processors
     "allauth.account.context_processors.account",
-    "allauth.socialaccount.context_processors.socialaccount"
+    "allauth.socialaccount.context_processors.socialaccount",
+
+    # dj-stripe
+    # 'djstripe.context_processors.djstripe_settings',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -165,4 +169,44 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+# STRIPE Payments
+# https://github.com/eldarion/django-stripe-payments
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "pk_test_9Er4D8VkLhMcbzLroR91wT3X")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "sk_test_GqvdKcnH6uc2GeiVpV1DD2U0")
+
+DJSTRIPE_PLANS = {
+    "backer-1": {
+        "stripe_plan_id": "one-dollar-backer",
+        "name": "Boatswain",
+        "description": "Monthly donation to BilgeCode.org",
+        "price": 1,
+        "currency": "usd",
+        "interval": "month"
+    },
+    "backer-3": {
+        "stripe_plan_id": "three-dollar-backer",
+        "name": "First Mate",
+        "description": "Monthly donation to BilgeCode.org",
+        "price": 3,
+        "currency": "usd",
+        "interval": "month"
+    },
+    "backer-5": {
+        "stripe_plan_id": "five-dollar-backer",
+        "name": "Captain",
+        "description": "Monthly donation to BilgeCode.org",
+        "price": 5,
+        "currency": "usd",
+        "interval": "month"
+    },
+    # "backer-10": {
+    #     "stripe_plan_id": "ten-dollar-backer",
+    #     "name": "Admiral",
+    #     "description": "Monthly donation to BilgeCode.org",
+    #     "price": 10,
+    #     "currency": "usd",
+    #     "interval": "month"
+    # },
 }

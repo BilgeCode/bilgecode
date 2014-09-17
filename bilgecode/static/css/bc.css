@@ -1,3 +1,7 @@
+body {
+  font-size: 16px;
+}
+
 .navbar {
   background-color: #386cb0; /*#428bca;*/
   color: #ddd;
@@ -48,7 +52,7 @@
 
 .navbar-toggle {
   border-color: white;
-  margin-right: 70px;
+  /*margin-left: 10px;*/
 }
 
 ul.navbar-right {

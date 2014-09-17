@@ -34,76 +34,30 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-42658894-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    {% block extra_js %}{% endblock %}
   </head>
 
   <body>
 
     {% include "navbar.html" %}
 
-    {% block bc-content %}
+    {% block content %}
+    {% endblock %}
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/sunset.jpg' %}');height: 40px;background-position: center bottom;border-bottom: 1px solid #eee;"></div>
-    <div class="jumbotron">
-      <div class="container">
-        <img
-          src="{% static 'images/bilgecode_213x200.png' %}"
-          alt="BilgeCode.com Logo"
-          class='pull-left'
-          style="margin: 20px 40px 20px 0px;">
-        <h1>BilgeCode</h1>
-        <p>
-          <em>Software for boaters.</em>
-          <br>
-          On a mission to provide awesome tools for those of us traveling on the water.
-        </p>
-        <a href="/about/" class="btn btn-success" role="button">Learn more &raquo;</a>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <a href="/passage-planner/">
-          <img
-            src="{% static 'images/passage-planner-circle.png' %}"
-            alt="Passage Planner Logo"
-            class='pull-left'
-            style="margin: 20px 40px 50px 0px;"></a>
-          <h2>
-            Passage Planner
-            <sup style='font-size: .7em;color: #ccc;font-weight: normal;'>beta</sup>
-          </h2>
-          <p>Tide, sunrise/sunset, and weather predictions at any point along your route. My first BilgeCode project.</p>
-          <p>
-            <a class="btn btn-primary" href="/passage-planner/" role="button">
-              Start Planning &raquo;</a>
-            <a class="btn btn-info" href="#" role="button">
-              Watch the intro video &raquo;</a>
-          </p>
-        </div>
-        <div class="col-md-6">
-          <img
-            src="{% static 'images/ben.jpg' %}"
-            alt="Ben"
-            class='pull-right'
-            style="margin: 20px 0px 50px 40px;">
-          <h2>Who's behind this?</h2>
-          <p>
-            I'm a web developer working remotely from a 26' Nonsuch, currently exploring the coast of Nova Scotia. I'm passionate about simple software solutions, sustainabile living, and of course, sailing!
-          </p>
-          <p>
-            <strong class="pull-right">-Ben</strong>
-          </p>
-        </div>
-      </div>
-
-      {% endblock %}
-
-      {% block footer %}
-        {% include "footer.html" %}
-      {% endblock %}
-    </div> <!-- /container -->
+    {% block footer %}
+      {% include "footer.html" %}
+    {% endblock %}
 
 
     <!-- Bootstrap core JavaScript
@@ -134,13 +88,16 @@
     }]);
 
     // Add default trigger to the bottom-right corner of the window:
-    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'top-right' }]);
+    UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
 
     // Or, use your own custom trigger:
     //UserVoice.push(['addTrigger', '#id', { mode: 'contact' }]);
 
     // Autoprompt for Satisfaction and SmartVote (only displayed under certain conditions)
     UserVoice.push(['autoprompt', {}]);
+
+    {% block javascript %}{% endblock %}
+    {% block extra_footer_script %}{% endblock %}
     </script>
   </body>
 </html>

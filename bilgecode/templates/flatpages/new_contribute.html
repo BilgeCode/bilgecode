@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+  BilgeCode - Help Make BilgeCode Better
+{% endblock %}
+
+{% block content %}
+
+  <div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/headers/rogues.jpg' %}');height: 40px;background-position: bottom bottom;border-bottom: 1px solid #eee;"></div>
+  <div class='jumbotron'>
+    <div class="container container-title">
+      <h1>
+        Support BilgeCode
+        <small>&raquo; Help me provide awesome tools</small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="container container-about">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>
+          Why Support?
+          <small>&raquo; To keep me going, of course.</small>
+        </h2>
+      </div>
+    </div>
+    <a name="passage-planner"></a>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1 text-center">
+        <a href="/passage-planner/">
+        <img
+          src="{% static 'images/ben.jpg' %}"
+          alt="Ben"
+          style="margin-top: 30px;"></a>
+      </div>
+      <div class="col-md-7">
+        <h3>
+          This isn't my day job
+
+          <small>&raquo; maybe one day it could be...</small>
+        </h3>
+        <p>
+          I’d love to spend all my time working on software like this, built
+          around sailing, and I have a ton of ideas. If you like what I've done
+          so far, I'm hoping you can help me.
+        </p>
+        <p>
+          I'll publish all BilgeCode expenses and income. For more information
+          about my principles and why this is free, please read more
+          <a href="/about/">about Bilgecode</a>.
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>
+          How can you Contribute?
+          <small>&raquo; It's easy</small>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <h3>
+          Become a BACKER
+        </h3>
+        <p>
+          The most effective way to ensure the stability of BilgeCode is to
+          commit to regular contributions. This will allow me to have consistent
+          income and have a good idea of what I can expect each month.
+        </p>
+        <!-- <p>
+          <strong>"Why can't I contribute more?"</strong>
+          I want contributions from BACKERS to be consistent, so contributions
+          are deliberately small. I don't want to count on one person giving me
+          the cost of server hosting each month only to have them disappear.
+          Diversity will be much stronger.
+        </p> -->
+      </div>
+      <div class='col-md-5'>
+        <button type="button" class="btn btn-lg btn-info btn-block">
+          Boatswain
+          <small>$1/month</small>
+        </button>
+        <button type="button" class="btn btn-lg btn-primary btn-block">
+          First Mate
+          <small>$3/month</small>
+        </button>
+        <button type="button" class="btn btn-lg btn-success btn-block">
+          Captain
+          <small>$5/month</small>
+        </button>
+        <!-- <button type="button" class="btn btn-lg btn-success btn-block">
+          Admiral
+          $10
+        </button> -->
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+
+      <div class="col-md-5 col-md-offset-1">
+        <h3>
+          Drive a FEATURE
+        </h3>
+        <p>
+          There are a bunch of improvements in the works. Vote for a feature by
+          <strong>pledging</strong> for it.
+        </p>
+        <p>
+          <em>I won’t ask for the money until I actually build the feature.</em>
+        </p>
+        <p>
+          <strong>The Pipeline.</strong>
+          Don’t see your <a href="/passage-planner/">PassagePlanner</a>
+          feature listed or have an idea for a whole new project?
+        </p>
+        <p>
+          <a href="http://bilgecode.uservoice.com/forums/247471-general"
+            class='btn btn-primary'>Suggest one!</a>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <br/>
+        NOAA Charts
+        <button type="button" class="btn btn-link pull-right">
+          Pledge
+          <br/>
+          <span class="fa fa-thumbs-up"></span>
+        </button>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            $0
+          </div>
+        </div>
+        Wind Speed/Direction (US Waters)
+        <button type="button" class="btn btn-link pull-right">
+          Pledge<br/>
+          <span class="fa fa-thumbs-up"></span>
+        </button>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+            $5
+          </div>
+        </div>
+        Wave Height (US Waters)
+        <button type="button" class="btn btn-link pull-right">
+          Pledge<br/>
+          <span class="fa fa-thumbs-up"></span>
+        </button>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+            $5
+          </div>
+        </div>
+        Tidal Currents (US Waters)
+        <button type="button" class="btn btn-link pull-right">
+          Pledge<br/>
+          <span class="fa fa-thumbs-up"></span>
+        </button>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+            $10
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6 text-center">
+        <h3>
+          Make a one-off Donation
+        </h3>
+        <p>
+          Like a feature, but didn't get a chance to pledge for it? Not ready
+          to become a BACKER? Win the lottery and want to share??
+          Whatever your reason, you can still simply send me one-off donation.
+        </p>
+      </div>
+      <div class='col-md-4 col-md-offset-4 text-center'>
+        <br/>
+        <button type="button" class="btn btn-lg btn-success btn-block" style="padding-top: 30px; padding-bottom: 30px;">
+          Donate Now!
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="text-right" style="padding-top: 20px;">
+        Are you a coder?
+          <a href="https://github.com/BilgeCode">
+            Contribute code!</a>
+      </div>
+    </div>
+
+
+{% endblock %}

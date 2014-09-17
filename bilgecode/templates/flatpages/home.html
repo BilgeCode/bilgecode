@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+  BilgeCode - What's it all about?
+{% endblock %}
+
+{% block content %}
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/sunset.jpg' %}');height: 40px;background-position: center bottom;border-bottom: 1px solid #eee;"></div>
+  <div class="jumbotron">
+    <div class="container">
+      <img
+        src="{% static 'images/passage-planner_214x200.png' %}"
+        alt="BilgeCode.com Logo"
+        class='pull-left'
+        style="margin: 20px 40px 20px 0px;">
+      <h1>
+        Passage Planner
+        <sup style='font-size: .7em;color: #ccc;font-weight: normal;'>beta</sup>
+      </h1>
+      <p>
+        Tide, sunrise/sunset, and weather predictions at any point along your route.
+        <br>
+        My first BilgeCode project.
+      </p>
+      <p>
+        <a class="btn btn-success" href="/passage-planner/" role="button">
+          Start Planning &raquo;</a>
+        <a class="btn btn-info" href="#" role="button">
+          Watch the intro video &raquo;</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <a href="/passage-planner/">
+        <img
+          src="{% static 'images/bilgecode-circle_150x150.png' %}"
+          alt="Passage Planner Logo"
+          class='pull-left'
+          style="margin: 20px 40px 50px 0px;"></a>
+        <h2>
+          BilgeCode <small>» Software for boaters</small>
+        </h2>
+        <p>
+          On a mission to provide awesome tools for those of us traveling on the water.
+        </p>
+        <p>
+          I have a lot of ideas for boat-related software, and hope that
+          Bilgecode.org can become a hub of free and open source tools.
+        </p>
+        <a
+          href="/about/"
+          class="btn btn-primary pull-right"
+          role="button">Learn more &raquo;</a>
+      </div>
+      <div class="col-md-6">
+        <img
+          src="{% static 'images/ben.jpg' %}"
+          alt="Ben"
+          class='pull-right'
+          style="margin: 20px 0px 50px 40px;">
+        <h2>Who's behind this?</h2>
+        <p>
+          I'm a web developer working remotely from a 26' Nonsuch, currently exploring the coast of Nova Scotia. I'm passionate about simple software solutions, sustainabile living, and of course, sailing!
+        </p>
+        <p>
+          <strong>-Ben</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

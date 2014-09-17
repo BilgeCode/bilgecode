@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+  BilgeCode - Help Make BilgeCode Better
+{% endblock %}
+
+{% block content %}
+
+  <div style="margin: 0px;padding:30px;background-color: #efefef;background-image: url('{% static 'images/headers/rogues.jpg' %}');height: 40px;background-position: bottom bottom;border-bottom: 1px solid #eee;"></div>
+  <div class='jumbotron'>
+    <div class="container container-title">
+      <h1>
+        Support BilgeCode
+        <small>&raquo; Help me provide awesome tools</small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="container container-about">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>
+          Why Support?
+          <small>&raquo; To keep me going, of course.</small>
+        </h2>
+      </div>
+    </div>
+    <a name="passage-planner"></a>
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1 text-center">
+        <a href="/passage-planner/">
+        <img
+          src="{% static 'images/ben.jpg' %}"
+          alt="Ben"
+          style="margin-top: 30px;"></a>
+      </div>
+      <div class="col-md-7">
+        <h3>
+          This isn't my day job
+
+          <small>&raquo; maybe one day it could be...</small>
+        </h3>
+        <p>
+          I’d love to spend all my time working on software like this, built
+          around sailing, and I have a ton of ideas. If you like what I've done
+          so far, I'm hoping you can help me.
+        </p>
+        <p>
+          I'll publish all BilgeCode expenses and income. For more information
+          about my principles and why this is free, please read more
+          <a href="/about/">about Bilgecode</a>.
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>
+          How can you Contribute?
+          <small>&raquo; It's easy</small>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <h3>
+          Use PassagePlanner
+        </h3>
+        <p>
+          The most valuable thing you can do is use the
+          <a href="/passage-planner/">PassagePlanner</a> tool. It's just getting
+          started, so let me know what you think... point out a bug or recommend
+          a feature.
+        </p>
+        <p>
+          <a href="http://bilgecode.uservoice.com"
+            onclick="javascript:UserVoice.push(['show',]);return false;"
+            class="btn btn-success">Make a Suggestion</a>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <h3>
+          Make a one-off Donation
+        </h3>
+        <p>
+          I'm determined to make BilgeCode free and donation-driven. I have some
+          ideas, but for now I am accepting donations to help support the cause.
+        </p>
+        <p>
+        <button type="button" class="btn btn-success">
+          Donate Now!
+        </button>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="text-right" style="padding-top: 20px;">
+        Are you a coder?
+          <a href="https://github.com/BilgeCode">
+            Contribute code!</a>
+      </div>
+    </div>
+
+
+{% endblock %}
