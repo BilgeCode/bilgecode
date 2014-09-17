@@ -25,7 +25,7 @@ DEBUG = os.environ.get("DEBUG", False)
 TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = [os.path.join(os.path.dirname(__file__), "templates")]
 
-ALLOWED_HOSTS = ['prev.bilgecode.org', 'localhost']
+ALLOWED_HOSTS = ['prev.bilgecode.org', 'www.bilgecode.com', 'localhost']
 
 
 # Application definition
