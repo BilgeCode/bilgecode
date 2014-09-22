@@ -45,7 +45,9 @@ class PassageNew(RedirectView):
                 "departureDate": date.today().strftime("%Y-%m-%d"),
                 "waypoints": [],
                 "estimatedAvgSpeed": 5,
-                "timeZone": "America/New_York"
+                "timeZone": "America/New_York",
+                "mapType": "terrain",
+                "zoom": 9,
             }
         )
         return p.get_absolute_url()
