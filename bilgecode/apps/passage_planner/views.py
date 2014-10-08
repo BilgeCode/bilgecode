@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, RedirectView, DetailView, DeleteView
+from django.views.generic import (
+    TemplateView, RedirectView, DetailView, DeleteView)
 from django.core.urlresolvers import reverse_lazy
 
 from models import Passage
@@ -7,6 +8,7 @@ from models import Passage
 from datetime import date
 
 import stathat
+
 
 class PlannerHome(TemplateView):
     """
@@ -21,7 +23,8 @@ class PlannerHome(TemplateView):
 
         passage_list = []
         if self.request.user.is_authenticated():
-            passage_list = Passage.objects.filter(user=self.request.user).order_by('date_created')
+            passage_list = Passage.objects.filter(user=self.request.user)
+            passage_list = passage_list.order_by('date_created')
         _context['passage_list'] = passage_list
 
         return _context
