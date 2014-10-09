@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Support for SSL with Nginx proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -83,7 +85,9 @@ DATABASES = {
 
 import dj_database_url
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DB_URL', "postgis://localhost/bc"))
+    'default': dj_database_url.parse(os.environ.get(
+        'DB_URL',
+        "postgis://localhost/bc"))
 }
 
 # Internationalization
@@ -107,8 +111,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "bilgecode", "static"),
 )
-MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, "..", "media"))
-STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, "..", "static"))
+MEDIA_ROOT = os.environ.get(
+    'MEDIA_ROOT',
+    os.path.join(BASE_DIR, "..", "media"))
+STATIC_ROOT = os.environ.get(
+    'STATIC_ROOT',
+    os.path.join(BASE_DIR, "..", "static"))
 
 # all auth
 TEMPLATE_CONTEXT_PROCESSORS = (
