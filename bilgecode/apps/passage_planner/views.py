@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse_lazy
 
 from models import Passage
 
-from datetime import date
+from datetime import date, timedelta
 
 import stathat
 
@@ -41,11 +41,13 @@ class PassageNew(RedirectView):
         # stathat statistic for new passage
         stathat.ez_count('ben@bilgecode.com', 'Passages Created', 1)
 
+        d = date.today() + timedelta(days=2)
+
         p = Passage.objects.create(
             user=self.request.user,
             passage_data={
                 "name": "New Passage",
-                "departureDate": date.today().strftime("%Y-%m-%d"),
+                "departureDate": d.strftime("%Y-%m-%d"),
                 "waypoints": [],
                 "estimatedAvgSpeed": 5,
                 "timeZone": "America/New_York",
