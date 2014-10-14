@@ -99,5 +99,22 @@
     {% block javascript %}{% endblock %}
     {% block extra_footer_script %}{% endblock %}
     </script>
+
+    <div class="modal fade" id="vidModal" tabindex="-1" role="dialog" aria-labelledby="vidModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="vidModalLabel">Intro to PassagePlanner</h4>
+        </div>
+        <div class="modal-body" style="text-align: center">
+          <iframe width="560" height="315" src="//www.youtube.com/embed/jqqq7SNcevM?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
   </body>
 </html>
