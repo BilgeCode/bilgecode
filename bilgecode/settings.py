@@ -13,9 +13,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Support for SSL with Nginx proxy
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+USE_SSL = os.environ.get("USE_SSL", False)
+if USE_SSL:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -157,10 +159,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL = "/"
 
 SOCIALACCOUNT_PROVIDERS = {
-    'facebook':
-       {'SCOPE': ['email', 'publish_stream'],
+    'facebook': {
+        'SCOPE': ['email', ],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'METHOD': 'oauth2', #'js_sdk',
+        'METHOD': 'oauth2',  # 'js_sdk',
         # 'LOCALE_FUNC': 'path.to.callable',
         'LOCALE_FUNC': lambda request: 'en_US',
         'VERIFIED_EMAIL': False}
